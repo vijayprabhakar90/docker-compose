@@ -44,7 +44,5 @@ services:
     expose:
       - "3306"
       - "22"
-    volumes:
-      - ./centos-mysql-supervisor/test:/var/lib/mysql
     depends_on:
       - consul3
