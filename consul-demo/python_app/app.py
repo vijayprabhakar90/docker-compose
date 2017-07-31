@@ -24,7 +24,9 @@ def mysql_version():
 def home():
     result = mysql_version()
     if result:
-       return 'Hello World!'
+       return 'Hello World ... DB connected!!'
+    else:
+	return 'Hello World ... DB connection issue? '
 
 
 @app.route('/health')
