@@ -11,6 +11,19 @@ BASE_CONSUL_URL = 'http://consul1:8500'
 
 PORT = 8080
 
+def get_mysql_host():
+    BASE_CONSUL_URL = 'http://consul1:8500/v1/catalog/service/mysqldb'
+    result = requests.get(BASE_CONSUL_URL)
+    return json.loads(result.text)
+
+def mysql_version():
+    host = get_mysql_host()[0]['Node']
+    mysql_connection = pymysql.connect(host=host,user="root",password="",db="mysql" )
+    cursor = mysql_connection.cursor()
+    cursor.execute("SELECT VERSION()")
+    data = cursor.fetchone()
+    return data
+
 def mysql_version():
     mysql_connection = pymysql.connect(host="db1",user="root",password="",db="mysql" )
     cursor = mysql_connection.cursor()
