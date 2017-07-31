@@ -24,13 +24,6 @@ def mysql_version():
     data = cursor.fetchone()
     return data
 
-def mysql_version():
-    mysql_connection = pymysql.connect(host="db1",user="root",password="",db="mysql" )
-    cursor = mysql_connection.cursor()
-    cursor.execute("SELECT VERSION()")
-    data = cursor.fetchone()
-    return data
-
 
 
 @app.route('/')
